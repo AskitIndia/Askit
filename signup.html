@@ -101,14 +101,16 @@
     }
 
     // Load Google Sign-In
+  // Load Google Sign-In
 window.onload = function () {
     google.accounts.id.initialize({
         client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
         callback: handleCredentialResponse
     });
 
+    // Render the Google Sign-In button after initialization
     google.accounts.id.renderButton(
-        document.getElementById("google-signin-button"),
+        document.getElementById("googleLoginButton"),
         { theme: "outline", size: "large" }
     );
 };
