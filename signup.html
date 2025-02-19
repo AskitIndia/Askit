@@ -52,7 +52,7 @@
         const data = await response.json();
         if (data.success) {
             alert("Signup successful! Redirecting...");
-            window.location.href = '/login.html';
+            window.location.href = 'https://askitindia.github.io/Askit/login.html';
         } else {
             alert("Signup failed: " + data.error);
         }
@@ -71,7 +71,7 @@
         .then(data => {
             if (data.success) {
                 alert("Google Login Successful! Redirecting...");
-                window.location.href = "/dashboard.html";  // Redirect after login
+                window.location.href = "https://askitindia.github.io/Askit/login.html";  // Redirect after login
             } else {
                 alert("Google Login Failed!");
             }
@@ -82,7 +82,7 @@
     // Load Google Sign-In
     window.onload = function () {
         google.accounts.id.initialize({
-            client_id: "YOUR_GOOGLE_CLIENT_ID",
+            client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
             callback: handleCredentialResponse
         });
 
