@@ -83,7 +83,7 @@
     function handleCredentialResponse(response) {
         console.log("Encoded JWT ID token: " + response.credential);
         
-        fetch('/google-login', {
+        fetch('https://askitindia.github.io/Askit//google-login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: response.credential })
