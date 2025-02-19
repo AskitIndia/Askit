@@ -111,7 +111,7 @@ async function fetchOffers() {
             document.querySelectorAll('.viewProfileButton').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const userId = event.target.getAttribute('data-userid');
-                    window.location.href = `https://shreynik00.github.io/Askit/seeProfile.html?username=${ausername}`;
+                    window.location.href = `https://askitindia.github.io/Askit/seeProfile.html?username=${ausername}`;
                 });
             });
 
@@ -131,7 +131,7 @@ async function fetchOffers() {
                             throw new Error('Failed to accept offer');
                         }
                         alert('Offer accepted successfully!');
-                          window.location.href = `https://shreynik00.github.io/Askit/reciverIndex.html?username=${ausername}`;
+                          window.location.href = `https://askitindia.github.io/Askit/reciverIndex.html?username=${ausername}`;
                     } catch (error) {
                         console.error('Error accepting offer:', error);
                         alert('Failed to accept offer.');
@@ -182,11 +182,11 @@ initializePage();
         }
 
         function goToProfile() {
-   window.location.href = `https://shreynik00.github.io/Askit/viewOwnProfile.html?username=${ausername}`;
+   window.location.href = `https://askitindia.github.io/Askit/viewOwnProfile.html?username=${ausername}`;
         }
 
         function logout() {
-            window.location.href = `https://shreynik00.github.io/Askit/login.html`;
+            window.location.href = `https://askitindia.github.io/Askit/login.html`;
         }
 </script>
 </body>
