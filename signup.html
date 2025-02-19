@@ -101,17 +101,20 @@
     }
 
     // Load Google Sign-In
-    window.onload = function () {
-        google.accounts.id.initialize({
-            client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
-            callback: handleCredentialResponse
-        });
+  // Load Google Sign-In
+window.onload = function () {
+    google.accounts.id.initialize({
+        client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+    });
 
-        google.accounts.id.renderButton(
-            document.getElementById("googleLoginButton"),
-            { theme: "outline", size: "large" }
-        );
-    };
+    // Render the Google Sign-In button after initialization
+    google.accounts.id.renderButton(
+        document.getElementById("googleLoginButton"),
+        { theme: "outline", size: "large" }
+    );
+};
+
     </script>
 
 </body>
