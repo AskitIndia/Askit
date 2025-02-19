@@ -24,7 +24,14 @@
         <div>
             <h3>Don't have an account?   <a href="signup.html" color="red"><strong>  Sign Up</strong></a></h3> <!-- Sign up link -->
         </div>
+        
     </div>
+    <div id="g_id_onload"
+         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+         data-callback="handleGoogleLogin"
+         data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
 <script>
     window.onload = function() {
         // Clear form values on page load
@@ -43,6 +50,36 @@
         document.getElementById('loginMessage').textContent = '';
 
         try {
+
+             async function handleGoogleLogin(response) {
+            const userData = jwt_decode(response.credential);
+            
+            // Extract required fields
+            const googleUser = {
+                googleId: userData.sub,  // Google ID
+                email: userData.email,
+                username: userData.name
+            };
+
+            console.log("Google User Data:", googleUser);
+
+            // Send to your backend for login
+            const res = await fetch("https://apiserveraskit-4.onrender.com/auth/google", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(googleUser)
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert("Login successful!");
+                // Save user session (localStorage or cookie)
+                localStorage.setItem("user", JSON.stringify(data.user));
+                window.location.href = "/dashboard.html"; // Redirect after login
+            } else {
+                alert("Login failed!");
+            }
+        }
             // Send the login request to your backend server
             const response = await fetch('https://apiserveraskit-4.onrender.com/login', {  // Use your actual backend URL
                 method: 'POST',
