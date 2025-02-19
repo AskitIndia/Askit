@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Task</title>
+    <link rel="stylesheet" href="posttaskStyles.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Post a Task</h1>
+    </header>
+
+    <section>
+        <form id="taskForm">
+            <label for="taskTitle">Title of Task</label><br>
+            <input type="text" id="taskTitle" placeholder="Write a title for your task" required><br>
+            
+            <label for="taskDetail">Task Detail</label>
+            <textarea id="taskDetail" required></textarea><br>
+            
+            <label for="taskType">Type of Task:</label>
+            <select id="taskType" required>
+                <option value="">Select the type of task</option>
+                <option value="Photography">Photography</option>
+                  <option value="fitness and bodybuilding">fitness and bodybuilding</option>
+                  <option value="borrowing-lending">borrowing-lending</option>
+                <option value="Tutoring">Tutoring</option>
+                <option value="Event">Events</option>
+                <option value="Homework">Homework and Assignment</option>
+                <option value="Petcare">Petcare</option>
+                <option value="Office">Office Work</option>
+                <option value="Design">Design</option>
+                <option value="Lift-Move-Pack">Lift-Move-Pack</option>
+                <option value="Custom">Custom</option>
+            </select><br>
+
+            <label for="taskDeadline">When you want it to be Done</label>
+            <input type="date" id="taskDeadline" required><br><br>
+
+            <!-- Toggle button for mode of task -->
+            <label>Mode of Task:</label><br>
+            <label><input type="radio" name="taskMode" value="In Person" required> In Person</label>
+            <label><input type="radio" name="taskMode" value="Remote" required> Remote</label><br>
+
+            <!-- New input field for Budget -->
+            <label for="taskBudget">Your Budget in Rs:</label> 
+            <input type="number" id="taskBudget" placeholder="Enter your budget" required><br>
+
+               <label for="skills">
+                   Your Task Location
+               </label><br>
+            <input type="text" id="location" placeholder="Enter  the task location " required><br>
+
+            <label for="skills">Specific Skills OR Equipment requied</label><br>
+            <input type="text" id="skills" placeholder="Enter  the skills required" required><br>
+            <!-- Urgency checkboxes -->
+      
+
+            <label>Select your payment method:</label><br>
+<label><input type="checkbox" id="paymentInCash" onclick="updatePaymentMethod(this)"> In Cash</label>
+<label><input type="checkbox" id="paymentUPI" onclick="updatePaymentMethod(this)"> UPI Only</label><br>
+            <button type="submit">Post Task</button>
+        </form>
+    </section>
+ 
+
+    <script>
+                const blocklist = ["abuse", "racist", "offensive", "exampleword"]; 
+        // Get username from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        let urgencyType = ""; // Variable to store selected urgency type
+
+          let paymentMethod = ""; // Variable to store selected payment method
+
+    // Function to handle checkbox selection and enforce only one selection
+    function updatePaymentMethod(selectedCheckbox) {
+        const inCashCheckbox = document.getElementById('paymentInCash');
+        const upiCheckbox = document.getElementById('paymentUPI');
+
+        // Uncheck the other checkbox when one is selected
+        if (selectedCheckbox.id === 'paymentInCash') {
+            upiCheckbox.checked = false;
+            paymentMethod = "In Cash";
+        } else if (selectedCheckbox.id === 'paymentUPI') {
+            inCashCheckbox.checked = false;
+            paymentMethod = "UPI Only";
+        }
+    }
+
+    
+
+        // Handle form submission
+        document.getElementById('taskForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const title = document.getElementById('taskTitle').value;
+            const detail = document.getElementById('taskDetail').value;
+            const deadline = document.getElementById('taskDeadline').value;
+            const mode = document.querySelector('input[name="taskMode"]:checked').value;
+            const type = document.getElementById('taskType').value;
+            const budget = document.getElementById('taskBudget').value;
+            const requirements = document.getElementById('skills').value;
+              const location = document.getElementById('location').value;
+
+             // Collect all inputs to validate
+        const allInputs = [title, detail, requirements, location];
+
+        // Check if title or detail contains restricted words
+        const inputsToValidate = [title, detail,requirements, location];
+        const containsBlockedWord = inputsToValidate.some(input =>
+            blocklist.some(word => input.includes(word))
+        );
+
+        if (containsBlockedWord) {
+            // Show alert and stop form submission
+            alert("The task title or description contains prohibited words. Please remove them and try again.");
+            return;
+        }
+            const status = "unaccepted ";
+            const isdeleted = "false";
+            const ProviderEndedTask = "false";
+            const RequesterEndedTask = "false";
+
+          
+
+            try {
+                const response = await fetch('https://apiserveraskit-4.onrender.com/add-task', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title,
+                        detail,
+                        deadline,
+                        requirements,
+                        mode,
+                        location,
+                        type,
+                        isdeleted,
+                        ProviderEndedTask,
+                        RequesterEndedTask,
+                        paymentMethod,
+                        budget,
+                        status,
+                        username
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Redirect to reciverIndex.html after successful task posting
+                    window.location.href = `https://shreynik00.github.io/Askit/reciverIndex.html?username=${encodeURIComponent(username)}`;
+                } else {
+                    alert(data.message); // Display error message if task was not added successfully
+                }
+
+            } catch (error) {
+                console.error('Error posting task:', error);
+                alert('Error posting task. Please try again.');
+            }
+        });
+            function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        document.getElementById('sidebarUsername').textContent = username || "User";
+
+        function goToHome() {
+            window.location.href = `role-selection.html?username=${username}`;
+        }
+
+        function goToProfile() {
+            alert('Redirecting to profile (not yet implemented).');
+        }
+
+        function logout() {
+            window.location.href = `https://shreynik00.github.io/Askit/login.html`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+/* Global settings */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+strong {
+    color: #ff4d4d; /* Bright red */
+    transition: color 0.3s ease;
+}
+
+strong:hover {
+    color: #ff7373;
+    text-shadow: 0px 0px 10px #ff7373, 0px 0px 20px #ffbbbb;
+}
+
+
+h1, h2 {
+    color: #00bcd4; /* Soft cyan */
+    text-shadow: 0px 0px 5px #08535d;
+    text-align: center;
+    transition: text-shadow 0.2s ease;
+}
+h3 ,h5{
+   color: #ffffff; /* White text */
+    text-shadow: 0px 0px 5px #00434c;
+    text-align: center;
+    transition: text-shadow 0.2s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* Container settings */
+div {
+    max-width: 530px;
+    width: 87%;
+    padding: 25px;
+    background: linear-gradient(135deg, #252525, #333);
+    border-radius: 15px;
+    box-shadow: 0px 9px 23px rgba(0, 0, 0, 0.8), 0px 1px 15px rgba(0, 255, 255, 0.959);
+    margin: 30px auto;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+input {
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: inset 0px 0px 5px rgba(0, 255, 255, 0.2);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+input::placeholder {
+    color: #a8a8a8;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4caf50;
+    color: #ffffff;
+    box-shadow: 0px 0px 5px #4caf50, 0px 0px 10px #386f4d;
+}
+
+button {
+    background-color: #5cf061c7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    
+}
+
+button:hover {
+background-color: #00ff00b7;
+    color: #000;
+    box-shadow: 0px 0px 5px #90e990, 0px 0px 6px #a3f2a3;
+    color: #222; /* Dark text on hover */
+}
+
+/* Profile section */
+#userProfile {
+    margin-top: 20px;
+}
+
+#userProfile p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0px 0px 8px #00eaff, 0px 0px 16px #00ffff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#userProfile p:hover {
+    color: #00ffff;
+    text-shadow: 0px 0px 15px #00ffff, 0px 0px 30px #aaffff;
+}
+
+/* Responsive design for tablets and smaller screens */
+@media (max-width: 768px) {
+    div {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
+
+/* Responsive design for mobile phones */
+@media (max-width: 480px) {
+    div {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    input {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+}

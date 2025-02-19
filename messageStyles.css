@@ -1,0 +1,117 @@
+/* Global styles */
+body {
+  background: linear-gradient(90deg, #0bdcf3, #76eaf3, #bdf7f3);
+
+    color: #e0f7fa; /* Light cyan text */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the chat */
+.container {
+    width: 80%;
+    max-width: 550px;
+    background-color: #1e1e1e; /* Slightly darker container background */
+    border-radius: 10px;
+    padding: 15px;
+    height: 88%;
+    box-shadow: 0 8px 10px rgba(0, 172, 193, 0.4); /* Cyan shadow */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title for the receiver (Centered) */
+h1 {
+    text-align: center;
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 10px;
+    color: #00acc1; /* Cyan title */
+    padding-left: 5px;
+    text-shadow: 0 2px 5px rgba(0, 172, 193, 0.6); /* Cyan text glow */
+}
+
+/* Box for input fields */
+.input-box {
+    margin-bottom: 15px;
+    padding: 9px;
+    background-color: #2a2a2a; /* Slightly lighter input box background */
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 172, 193, 0.2); /* Subtle shadow for input box */
+}
+/* Timestamp styling */
+.timestamp {
+    display: block;
+    font-size: 0.75rem; /* Smaller font size */
+    color: #bbb; /* Light gray color for the timestamp */
+    text-align: right; /* Align the timestamp to the right */
+    margin-top: 5px; /* Space between the message and the timestamp */
+}
+
+
+/* Input fields */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    background-color: transparent;
+    color: #e0f7fa; /* Cyan text */
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Submit button */
+button {
+    width: 100%;
+    padding: 9px; /* Uniform padding on all sides */
+    background-color: #00acc1; /* Cyan background */
+    color: #000; /* Black text for buttons */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 172, 193, 0.4); /* Cyan button shadow */
+}
+
+button:hover {
+    background-color: #00838f; /* Darker cyan on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 5px 10px rgba(0, 172, 193, 0.6); /* Brighter shadow on hover */
+}
+
+/* Chat Box */
+#chat-box {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Responsive layout */
+@media screen and (min-width: 768px) {
+    .container {
+        width: 70%;
+        height: 70%;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 60%;
+        height: 70%;
+    }
+}

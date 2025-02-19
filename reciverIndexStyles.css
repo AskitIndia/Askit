@@ -1,0 +1,169 @@
+/* Resetting some default styles */
+body, h1, h2, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     color: #ffffff;
+}
+p{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color:  #ffffff;
+}
+/* Body styles */
+body {
+    background-color: #121212; /* Dark background */
+    color: #00ffff; /* Light cyan text color */
+    font-family: Arial, sans-serif; /* Font family */
+    padding: 20px; /* Padding around the body */
+}
+
+/* Heading styles */
+h1, h2 {
+    color: #02e2ff; /* Cyan color for headings */
+    text-align: center; /* Center align headings */
+    text-shadow: 0px 1px 3px rgb(19, 194, 218); /* Subtle glow effect */
+}
+
+h1 {
+    font-size: 2.8rem; /* Increased font size */
+    margin-bottom: 20px; /* Space below h1 */
+      color:  #05acf9;
+}
+
+h2 {
+    font-size: 2.2rem; /* Increased font size */
+    margin-bottom: 15px; /* Space below h2 */
+}
+i{
+   color: #1fb8ff;
+       font-size: 1.5em; /* Larger font size */
+   
+}
+/* Centering Add Task button */
+#addTaskButton {
+    display: block; /* Make button a block element */
+    margin: 20px auto; /* Center the button */
+    padding: 1em 3em; /* Responsive padding (wider button) */
+    font-size: 1.6em; /* Larger font size */
+    max-width: 450px; /* Increased max width for larger screens */
+    width: 100%; /* Ensure it spans the max width on smaller screens */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #40e0d0; /* Bright cyan background (hover color moved here) */
+    color: #121212; /* Dark text */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0px 4px 12px rgba(64, 224, 208, 0.6); /* Brighter glow effect */
+}
+
+/* Darker normal state */
+#addTaskButton:hover {
+    background-color: #00acc1; /* Darker cyan on hover */
+    color: #ffffff; /* White text for better contrast */
+    box-shadow: 0px 4px 8px rgba(0, 172, 193, 0.5); /* Subtle glow effect */
+}
+
+#addTaskButton:hover {
+    background-color: #00838f; /* Darker cyan on hover */
+    box-shadow: 0px 6px 12px rgba(0, 172, 193, 0.7); /* Slightly brighter glow */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Task container styles */
+#tasksContainer {
+    margin-top: 20px; /* Space above tasks */
+   
+
+}
+
+/* Individual task styles */
+.task {
+            box-shadow: 0 2px 6px rgba(0, 172, 193, 0.2); /* Reduced cyan glow */
+    border: 1.5px solid #00acc1; /* Cyan border */
+    background-color: #1e1e1e; /* Darker background for tasks */
+    border: 1px solid #444444; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 172, 193, 0.2); /* Reduced cyan glow */
+    border: 1px solid #00acc1; /* Cyan border */
+
+        
+    padding: 20px; /* Increased padding inside the task */
+        
+ color: #ffffff;
+    margin-bottom: 15px; /* Space between tasks */
+    position: relative; /* For positioning the button */
+}
+
+/* Button styles */
+button {
+    background-color: #40e0d0; /* Cyan background for buttons */
+    color: #121212; /* Dark text for buttons */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0.8em 1.5em; /* Responsive padding */
+    font-size: 1.2em; /* Larger font size */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth background and hover */
+    display: inline-block; /* Align buttons inline */
+    box-shadow: 0px 3px 6px rgba(0, 172, 193, 0.4); /* Subtle glow */
+}
+
+button:hover {
+    background-color: #00838f; /* Darker cyan on hover */
+    transform: scale(1.03); /* Slight hover zoom */
+    box-shadow: 0px 5px 10px rgba(0, 172, 193, 0.6); /* Brighter glow */
+}
+
+/* Aligning View Offers button to the right */
+.viewOffersButton {
+    position: absolute; /* Position absolutely within the task */
+    right: 15px; /* Align to the right */
+    bottom: 15px; /* Align to the bottom */
+}
+
+.chatButton {
+    position: absolute; /* Position absolutely within the task */
+    right: 15px; /* Align to the right */
+    bottom: 15px; /* Align to the bottom */
+}
+/* Display username styles */
+#usernameDisplay {
+    font-size: 1.4em; /* Larger font for username */
+    margin-bottom: 20px; /* Space below username */
+    color: #00acc1; /* Cyan-accented username text */
+    text-shadow: 0px 1px 3px rgba(0, 172, 193, 0.5); /* Reduced glow effect */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #addTaskButton {
+        width: 100%; /* Make the button full-width on smaller screens */
+        padding: 1em; /* Adjust padding */
+        font-size: 1.4em; /* Responsive font size */
+    }
+    .task {
+        padding: 15px; /* Adjust padding inside task on smaller screens */
+    }
+    button {
+        width: auto; /* Default width for buttons on mobile */
+        padding: 0.7em 1.2em; /* Adjust padding */
+        font-size: 1em; /* Responsive font size */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem; /* Smaller heading for mobile */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Adjust subheading size */
+    }
+
+    #addTaskButton {
+        font-size: 1.2em; /* Adjust button size */
+        padding: 0.9em 1.2em; /* Reduced padding */
+    }
+}
