@@ -164,7 +164,7 @@
  
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
+     const username = urlParams.get('username')?.trim();
     const sidebar = document.getElementById('sidebar');
 
     document.getElementById('sidebarUsername').textContent = username || "User";
