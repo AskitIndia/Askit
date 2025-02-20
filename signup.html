@@ -54,7 +54,7 @@
         event.preventDefault();
         alert("Signing up... Please wait.");
 
-        const username = document.getElementById('signupUsername').value;
+        const username = document.getElementById('signupUsername').value.trim();
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
