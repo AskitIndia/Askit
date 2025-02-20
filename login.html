@@ -33,7 +33,7 @@
         <!-- Google Sign-In Button -->
       <div id="g_id_onload"
     data-client_id="190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com"
-    data-login_uri="https://askitindia.github.io/Askit/role-selection.html"
+    data-callback="handleGoogleLogin"
     data-auto_prompt="false">
 </div>
         <div class="g_id_signin" data-type="standard"></div>
@@ -111,7 +111,7 @@
             if (data.success) {
                 alert("Google Login successful!");
                 localStorage.setItem("user", JSON.stringify(data.user));
-                window.location.href = "https://askitindia.github.io/Askit/role-selection.html";  // Change to your actual dashboard URL
+                window.location.href = `https://askitindia.github.io/Askit/role-selection.html?username=${encodeURIComponent(googleUser.username)}`;
             } else {
                 alert("Google Login failed!");
             }
