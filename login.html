@@ -31,11 +31,11 @@
         </div>
 
         <!-- Google Sign-In Button -->
-      <div id="g_id_onload"
-    data-client_id="190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com"
-    data-callback="handleGoogleLogin"
-    data-auto_prompt="false">
-</div>
+        <div id="g_id_onload"
+            data-client_id="190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com"
+            data-callback="handleGoogleLogin"
+            data-auto_prompt="false">
+        </div>
         <div class="g_id_signin" data-type="standard"></div>
     </div>
 
@@ -74,8 +74,8 @@
                 document.getElementById('loginUsername').value = '';
                 document.getElementById('loginPassword').value = '';
 
-                // Redirect to role selection page
-                window.location.href = `https://askitindia.github.io/Askit/role-selection.html?username=${username}&email=${data.email}`;
+                // Redirect to role selection page with username and email
+                window.location.href = `https://askitindia.github.io/Askit/role-selection.html?username=${encodeURIComponent(username)}&email=${encodeURIComponent(data.email)}`;
             } else {
                 document.getElementById('loginMessage').textContent = data.message;
             }
@@ -111,6 +111,8 @@
             if (data.success) {
                 alert("Google Login successful!");
                 localStorage.setItem("user", JSON.stringify(data.user));
+
+                // Redirect with username as parameter
                 window.location.href = `https://askitindia.github.io/Askit/role-selection.html?username=${encodeURIComponent(googleUser.username)}`;
             } else {
                 alert("Google Login failed!");
