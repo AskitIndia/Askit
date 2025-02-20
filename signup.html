@@ -50,67 +50,70 @@
     <div id="googleLoginButton"></div>
 
     <script>
-    document.getElementById('signupForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        alert("Signing up... Please wait.");
+document.getElementById('signupForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    alert("Signing up... Please wait.");
 
-        const username = document.getElementById('signupUsername').value;
-        const email = document.getElementById('signupEmail').value;
-        const password = document.getElementById('signupPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
+    const username = document.getElementById('signupUsername').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-     const response = await fetch('https://apiserveraskit-4.onrender.com/signup', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, email, password })
-});
-
-const text = await response.text(); // Get raw response first
-console.log("Response Text:", text); // Log response
-
-try {
-    const data = JSON.parse(text); // Now try to parse JSON
-    if (data.success) {
-        alert("Signup successful! Redirecting...");
-        window.location.href = 'https://askitindia.github.io/Askit/login.html';
-    } else {
-        alert("Signup failed: " + data.error);
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
     }
-} catch (error) {
-    console.error("JSON Parsing Error:", error);
-    alert("Server error. Please try again later.");
-}
 
-
-
-    // Google Login Handler
-    function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token: " + response.credential);
-        
-        fetch('https://apiserveraskit-4.onrender.com/google-login', {
+    try {
+        const response = await fetch('https://apiserveraskit-4.onrender.com/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: response.credential })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                alert("Google Login Successful! Redirecting...");
-                window.location.href = "https://askitindia.github.io/Askit/login.html";  // Redirect after login
-            } else {
-                alert("Google Login Failed!");
-            }
-        })
-        .catch(error => console.error("Google login error:", error));
-    }
+            body: JSON.stringify({ username, email, password })
+        });
 
-    // Load Google Sign-In
-  // Load Google Sign-In
+        const text = await response.text(); // Get raw response first
+        console.log("Response Text:", text); // Log response for debugging
+
+        if (!response.ok) {
+            throw new Error(`Server Error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = JSON.parse(text); // Parse JSON only if response is valid
+
+        if (data.success) {
+            alert("Signup successful! Redirecting...");
+            window.location.href = 'https://askitindia.github.io/Askit/login.html';
+        } else {
+            alert("Signup failed: " + (data.error || "Unknown error"));
+        }
+    } catch (error) {
+        console.error("Signup Error:", error);
+        alert("Error signing up. Please check your network and try again.");
+    }
+});
+
+// Google Login Handler
+function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+
+    fetch('https://apiserveraskit-4.onrender.com/google-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: response.credential })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Google Login Successful! Redirecting...");
+            window.location.href = "https://askitindia.github.io/Askit/login.html";
+        } else {
+            alert("Google Login Failed!");
+        }
+    })
+    .catch(error => console.error("Google login error:", error));
+}
+
+// Load Google Sign-In
 window.onload = function () {
     google.accounts.id.initialize({
         client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
@@ -122,15 +125,9 @@ window.onload = function () {
             document.getElementById("googleLoginButton"),
             { theme: "outline", size: "large" }
         );
-    }, 500); // Small delay to ensure proper initialization
+    }, 500); // Ensure button is rendered after initialization
 };
 
-    // Render the Google Sign-In button after initialization
-    google.accounts.id.renderButton(
-        document.getElementById("googleLoginButton"),
-        { theme: "outline", size: "large" }
-    );
-};
 
     </script>
 
