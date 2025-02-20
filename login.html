@@ -24,20 +24,20 @@
             <div id="loginMessage" style="color:red;"></div> <!-- For displaying login message -->
         </div>
 
-        <div>
-            <h3>Don't have an account?   
-                <a href="signup.html" style="color:red;"><strong> Sign Up</strong></a>
-            </h3> <!-- Sign up link -->
-        </div>
+       <!-- Google Sign-In Button -->
+<div id="g_id_onload"
+    data-client_id="190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com"
+    data-callback="handleGoogleLogin"
+    data-auto_prompt="false">
+</div>
+<div class="g_id_signin" data-type="standard"></div>
 
-        <!-- Google Sign-In Button -->
-        <div id="g_id_onload"
-            data-client_id="190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com"
-            data-callback="handleGoogleLogin"
-            data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin" data-type="standard"></div>
-    </div>
+<!-- Sign Up Link -->
+<div>
+    <h3>Don't have an account?   
+        <a href="signup.html" style="color:red;"><strong> Sign Up</strong></a>
+    </h3>
+</div>
 
 <script>
     window.onload = function() {
