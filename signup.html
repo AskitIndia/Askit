@@ -87,12 +87,13 @@ window.onload = function () {
         callback: handleCredentialResponse
     });
 
-    // Render the Google Sign-In button after initialization
+    // Now render the Google Sign-In button after initialization
     google.accounts.id.renderButton(
         document.getElementById("googleLoginButton"),
         { theme: "outline", size: "large" }
     );
 };
+
 
 
     // Google Login Handler
