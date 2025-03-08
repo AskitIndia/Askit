@@ -82,6 +82,7 @@
         // Load Google Sign-In
   // Load Google Sign-In
 window.onload = function () {
+    // Initialize Google Sign-In after window loads
     google.accounts.id.initialize({
         client_id: "190022392096-gd9ehpmcvfonm496ip6p5ane43q4g4ce.apps.googleusercontent.com",
         callback: handleCredentialResponse
@@ -93,6 +94,7 @@ window.onload = function () {
         { theme: "outline", size: "large" }
     );
 };
+
 
 
 
