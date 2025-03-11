@@ -97,7 +97,7 @@ window.onload = function () {
 
     // Google Login Handler
     function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token: " + response.credential);
+     
         
         fetch('https://apiserveraskit-4.onrender.com/google-login', {
             method: 'POST',
