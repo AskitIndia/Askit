@@ -108,7 +108,7 @@ window.onload = function () {
         .then(data => {
             if (data.success) {
                 alert("Google Login Successful! Redirecting...");
-                window.location.href = `https://askitindia.github.io/Askit/role-selection.html?username=${encodeURIComponent(googleUser.username)}`;
+                window.location.href = `https://askitindia.github.io/Askit/login.html`;
             } else {
                 alert("Google Login Failed!");
             }
