@@ -84,9 +84,10 @@
 
             try {
                 const response = await fetch('https://apiserveraskit.vercel.app/login', { 
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                   method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+    credentials: "include"   // ✅ important for sessions
                 });
 
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -150,5 +151,6 @@
     </script>
 </body>
 </html>
+
 
 
